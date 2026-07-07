@@ -5,12 +5,17 @@
 		<Nullable>enable</Nullable>
 	  </PropertyGroup>
 
+	  <PropertyGroup Condition="$(RuntimeIdentifier.StartsWith('linux'))">
+		<DefineConstants>IS_LINUX</DefineConstants>
+	  </PropertyGroup>
+	
 	  <ItemGroup>
 	    <PackageReference Include="Google.Protobuf" Version="3.33.0" />
 	    <PackageReference Include="Grpc.Tools" Version="2.72.0">
 	      <PrivateAssets>all</PrivateAssets>
 	      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 	    </PackageReference>
+	    <PackageReference Include="SingleFileExtractor.Core" Version="2.3.0" Condition="$(RuntimeIdentifier.StartsWith('linux'))"/>
 	  </ItemGroup>
 
 	<ItemGroup>
